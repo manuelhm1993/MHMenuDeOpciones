@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace MHMenuDeOpciones.App.Src.Models
 {
-    public class FuncionCuadratica
+    public class Resultado
     {
         public string Text { get; set; }
         public string Caption { get; set; }

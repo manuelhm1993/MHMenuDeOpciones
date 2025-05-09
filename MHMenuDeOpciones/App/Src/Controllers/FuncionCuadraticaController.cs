@@ -27,9 +27,9 @@ namespace MHMenuDeOpciones.App.Src.Controllers
         #region Métodos
         public static FuncionCuadraticaView GetView() => FormFuncionCuadratica;
 
-        public static FuncionCuadratica GetResultadoFuncionCuadratica(double a, double b, double c)
+        public static Resultado GetResultadoFuncionCuadratica(double a, double b, double c)
         {
-            FuncionCuadratica result = new FuncionCuadratica();
+            Resultado result = new Resultado();
 
             double delta = (b * b) - (4 * a * c);
 

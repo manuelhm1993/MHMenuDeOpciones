@@ -16,6 +16,7 @@ namespace MHMenuDeOpciones.App.Src.Views
     {
         #region Campos de clase
         private FuncionCuadraticaView _FormFuncionCuadraticaView;
+        private CalcularEdadView _FormCalcularEdadView;
         #endregion
 
         #region Propiedades
@@ -23,12 +24,19 @@ namespace MHMenuDeOpciones.App.Src.Views
         {
             get => _FormFuncionCuadraticaView;
         }
+
+        public CalcularEdadView FormCalcularEdadView
+        {
+            get => _FormCalcularEdadView;
+        }
         #endregion
 
         #region Métodos
         public MenuView()
         {
             this._FormFuncionCuadraticaView = FuncionCuadraticaController.GetView();
+
+            this._FormCalcularEdadView = CalcularEdadController.GetView();
 
             InitializeComponent();
 
@@ -40,32 +48,42 @@ namespace MHMenuDeOpciones.App.Src.Views
             this.radioButton1.Checked = true;
             this.groupInput.Visible = true;
 
-            MostrarFuncionCuadratica();
+            MostrarVista(this._FormFuncionCuadraticaView);
         }
 
-        private void MostrarFuncionCuadratica()
+        private void MostrarVista(Form FormView)
         {
             this.groupInput.Controls.Clear();
 
-            this._FormFuncionCuadraticaView.Reset();
-            this._FormFuncionCuadraticaView.Parent = this.flowLayoutPanel1;
-            this._FormFuncionCuadraticaView.Dock = DockStyle.Fill;
+            if(FormView is FuncionCuadraticaView FuncionCuadratica)
+            {
+                FuncionCuadratica.Reset();
+            }
+            else if(FormView is CalcularEdadView CalcularEdad)
+            {
+                CalcularEdad.Reset();
+            }
 
-            this.groupInput.Controls.Add(FormFuncionCuadraticaView);
+            FormView.TopLevel = false;
+            FormView.TopMost = false;
+            FormView.Parent = this.flowLayoutPanel1;
+            FormView.Dock = DockStyle.Fill;
 
-            this._FormFuncionCuadraticaView.Show();
+            this.groupInput.Controls.Add(FormView);
+
+            FormView.Show();
         }
         #endregion
 
         #region Eventos
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            MostrarFuncionCuadratica();
+            MostrarVista(this._FormFuncionCuadraticaView);
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            this.groupInput.Controls.Clear();
+            MostrarVista(this._FormCalcularEdadView);
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)

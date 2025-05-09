@@ -50,9 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Src\Controllers\CalcularEdadController.cs" />
     <Compile Include="App\Src\Controllers\FuncionCuadraticaController.cs" />
     <Compile Include="App\Src\Controllers\MenuController.cs" />
-    <Compile Include="App\Src\Models\FuncionCuadratica.cs" />
+    <Compile Include="App\Src\Models\Resultado.cs" />
+    <Compile Include="App\Src\Views\CalcularEdadView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="App\Src\Views\CalcularEdadView.Designer.cs">
+      <DependentUpon>CalcularEdadView.cs</DependentUpon>
+    </Compile>
     <Compile Include="App\Src\Views\FuncionCuadraticaView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +74,9 @@
     </Compile>
     <Compile Include="MainApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="App\Src\Views\CalcularEdadView.resx">
+      <DependentUpon>CalcularEdadView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="App\Src\Views\FuncionCuadraticaView.resx">
       <DependentUpon>FuncionCuadraticaView.cs</DependentUpon>
     </EmbeddedResource>

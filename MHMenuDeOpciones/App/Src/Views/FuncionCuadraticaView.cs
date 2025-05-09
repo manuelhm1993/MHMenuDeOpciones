@@ -27,14 +27,6 @@ namespace MHMenuDeOpciones.App.Src.Views
 
         public void Reset()
         {
-            this.TopLevel = false;
-            this.TopMost = false;
-
-            ResetNumericUpDown();
-        }
-
-        private void ResetNumericUpDown()
-        {
             foreach (NumericUpDown number in Numbers)
             {
                 number.Value = 0;
@@ -59,7 +51,7 @@ namespace MHMenuDeOpciones.App.Src.Views
             double b = (double)this.numericUpDown2.Value;
             double c = (double)this.numericUpDown3.Value;
 
-            FuncionCuadratica result = FuncionCuadraticaController.GetResultadoFuncionCuadratica(a, b, c);
+            Resultado result = FuncionCuadraticaController.GetResultadoFuncionCuadratica(a, b, c);
 
             MessageBox.Show(result.Text, result.Caption, result.Buttons, result.Icon);
 
@@ -84,7 +76,7 @@ namespace MHMenuDeOpciones.App.Src.Views
 
         private void btnCancelarFC_Click(object sender, EventArgs e)
         {
-            ResetNumericUpDown();
+            Reset();
         }
         #endregion
 
