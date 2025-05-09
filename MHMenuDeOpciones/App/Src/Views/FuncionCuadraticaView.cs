@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MHMenuDeOpciones.App.Src.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -39,40 +40,17 @@ namespace MHMenuDeOpciones.App.Src.Views
             double b = (double)this.numericUpDown2.Value;
             double c = (double)this.numericUpDown3.Value;
 
-            double delta = (b * b) - (4 * a * c);
+            Dictionary<string, string> result = (Dictionary<string, string>)FuncionCuadraticaController.GetResultadoFuncionCuadratica(a, b, c);
 
-            if (delta > 0)
-            {
-                delta = Math.Sqrt(delta);
+            MessageBoxButtons buttons;
+            if (!Enum.TryParse(result["Buttons"], out buttons)) buttons = MessageBoxButtons.OK;
 
-                double x1 = (-b + delta) / (2 * a);
-                double x2 = (-b - delta) / (2 * a);
+            MessageBoxIcon icon;
+            if (!Enum.TryParse(result["Icon"], out icon)) icon = MessageBoxIcon.Information;
 
-                MessageBox.Show(
-                    $"Raices reales: x1 = { x1 }, x2 = { x2 }",
-                    "Éxito",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-            }
-            else if (delta == 0)
-            {
-                MessageBox.Show(
-                    "Solo Chuck Norris puede dividir por cero", 
-                    "Error", 
-                    MessageBoxButtons.OK, 
-                    MessageBoxIcon.Error
-                );
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Solo Chuck Norris puede dividir sacar la raíz de un número negativo",
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
+            MessageBox.Show(result["Text"], result["Caption"], buttons, icon);
+
+            Reset();
         }
         #endregion
     }

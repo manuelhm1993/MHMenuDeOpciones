@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="App\Src\Controllers\FuncionCuadraticaController.cs" />
     <Compile Include="App\Src\Controllers\MenuController.cs" />
+    <Compile Include="App\Src\Models\FuncionCuadratica.cs" />
     <Compile Include="App\Src\Views\FuncionCuadraticaView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,9 +94,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App\Src\Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="App\Public\Assets\Images\Icons\logo.ico" />
     <Content Include="logo.ico" />
