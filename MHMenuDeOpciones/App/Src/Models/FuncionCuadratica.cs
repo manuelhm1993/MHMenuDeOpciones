@@ -4,10 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows.Forms;
+
 namespace MHMenuDeOpciones.App.Src.Models
 {
     public class FuncionCuadratica
     {
-        public static Dictionary<string, string> Resultado { get; set; }
+        public string Text { get; set; }
+        public string Caption { get; set; }
+        public MessageBoxButtons Buttons { get; set; }
+        public MessageBoxIcon Icon { get; set; }
     }
 }
