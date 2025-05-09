@@ -1,4 +1,5 @@
 ﻿using MHMenuDeOpciones.App.Src.Controllers;
+using MHMenuDeOpciones.App.Src.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,9 @@ namespace MHMenuDeOpciones.App.Src.Views
         {
             InitializeComponent();
 
+            Numbers = this.Controls.OfType<NumericUpDown>();
+
+            PonerEscuchaFocus();
             Reset();
         }
 
@@ -26,9 +30,17 @@ namespace MHMenuDeOpciones.App.Src.Views
             this.TopLevel = false;
             this.TopMost = false;
 
-            foreach(NumericUpDown txt in this.Controls.OfType<NumericUpDown>())
+            foreach(NumericUpDown number in Numbers)
             {
-                txt.Value = 0;
+                number.Value = 0;
+            }
+        }
+
+        private void PonerEscuchaFocus()
+        {
+            foreach (NumericUpDown number in Numbers)
+            {
+                number.GotFocus += new System.EventHandler(this.numericUpDownGotFocus);
             }
         }
         #endregion
@@ -40,18 +52,32 @@ namespace MHMenuDeOpciones.App.Src.Views
             double b = (double)this.numericUpDown2.Value;
             double c = (double)this.numericUpDown3.Value;
 
-            Dictionary<string, string> result = (Dictionary<string, string>)FuncionCuadraticaController.GetResultadoFuncionCuadratica(a, b, c);
+            FuncionCuadratica result = FuncionCuadraticaController.GetResultadoFuncionCuadratica(a, b, c);
 
-            MessageBoxButtons buttons;
-            if (!Enum.TryParse(result["Buttons"], out buttons)) buttons = MessageBoxButtons.OK;
-
-            MessageBoxIcon icon;
-            if (!Enum.TryParse(result["Icon"], out icon)) icon = MessageBoxIcon.Information;
-
-            MessageBox.Show(result["Text"], result["Caption"], buttons, icon);
+            MessageBox.Show(result.Text, result.Caption, result.Buttons, result.Icon);
 
             Reset();
         }
+
+        private void numericUpDownGotFocus(object sender, EventArgs e)
+        {
+            NumericUpDown number = (NumericUpDown)sender;
+            if (number.Controls.Count > 0)
+            {
+                foreach (Control control in number.Controls)
+                {
+                    if (control is TextBox textBox)
+                    {
+                        textBox.SelectAll();
+                        break;
+                    }
+                }
+            }
+        }
+        #endregion
+
+        #region Campos de clase
+        private IEnumerable<NumericUpDown> Numbers;
         #endregion
     }
 }
