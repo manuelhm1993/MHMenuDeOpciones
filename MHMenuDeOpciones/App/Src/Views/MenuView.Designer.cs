@@ -34,7 +34,9 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupInput = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupMenu.SuspendLayout();
+            this.groupInput.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupMenu
@@ -81,9 +83,11 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Función cuadrática";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // groupInput
             // 
+            this.groupInput.Controls.Add(this.flowLayoutPanel1);
             this.groupInput.Location = new System.Drawing.Point(12, 134);
             this.groupInput.Name = "groupInput";
             this.groupInput.Size = new System.Drawing.Size(559, 215);
@@ -91,6 +95,13 @@
             this.groupInput.TabStop = false;
             this.groupInput.Text = "Datos de entrada";
             this.groupInput.Visible = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1, 25);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(553, 184);
+            this.flowLayoutPanel1.TabIndex = 0;
             // 
             // MenuView
             // 
@@ -110,6 +121,7 @@
             this.Text = "MHMenuDeOpciones";
             this.groupMenu.ResumeLayout(false);
             this.groupMenu.PerformLayout();
+            this.groupInput.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -121,6 +133,7 @@
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
