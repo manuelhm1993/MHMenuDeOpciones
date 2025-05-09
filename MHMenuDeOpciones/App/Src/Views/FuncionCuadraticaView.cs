@@ -30,10 +30,17 @@ namespace MHMenuDeOpciones.App.Src.Views
             this.TopLevel = false;
             this.TopMost = false;
 
-            foreach(NumericUpDown number in Numbers)
+            ResetNumericUpDown();
+        }
+
+        private void ResetNumericUpDown()
+        {
+            foreach (NumericUpDown number in Numbers)
             {
                 number.Value = 0;
             }
+
+            this.numericUpDown1.Focus();
         }
 
         private void PonerEscuchaFocus()
@@ -73,6 +80,11 @@ namespace MHMenuDeOpciones.App.Src.Views
                     }
                 }
             }
+        }
+
+        private void btnCancelarFC_Click(object sender, EventArgs e)
+        {
+            ResetNumericUpDown();
         }
         #endregion
 

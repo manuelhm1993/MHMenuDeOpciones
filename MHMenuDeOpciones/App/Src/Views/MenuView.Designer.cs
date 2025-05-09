@@ -61,6 +61,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Promedio de gastos";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -72,6 +73,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Calcular edad";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 

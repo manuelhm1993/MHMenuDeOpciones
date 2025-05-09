@@ -62,6 +62,16 @@ namespace MHMenuDeOpciones.App.Src.Views
         {
             MostrarFuncionCuadratica();
         }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            this.groupInput.Controls.Clear();
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            this.groupInput.Controls.Clear();
+        }
         #endregion
     }
 }

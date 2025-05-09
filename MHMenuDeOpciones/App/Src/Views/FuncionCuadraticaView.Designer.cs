@@ -43,6 +43,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Location = new System.Drawing.Point(357, 7);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.numericUpDown1.Maximum = new decimal(new int[] {
@@ -81,8 +82,19 @@
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.DecimalPlaces = 2;
             this.numericUpDown2.Location = new System.Drawing.Point(357, 41);
             this.numericUpDown2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown2.Minimum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(180, 26);
             this.numericUpDown2.TabIndex = 1;
@@ -99,8 +111,19 @@
             // 
             // numericUpDown3
             // 
+            this.numericUpDown3.DecimalPlaces = 2;
             this.numericUpDown3.Location = new System.Drawing.Point(357, 77);
             this.numericUpDown3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.numericUpDown3.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.numericUpDown3.Minimum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            -2147483648});
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(180, 26);
             this.numericUpDown3.TabIndex = 2;
@@ -123,6 +146,7 @@
             this.btnCancelarFC.TabIndex = 9;
             this.btnCancelarFC.Text = "Cancelar";
             this.btnCancelarFC.UseVisualStyleBackColor = true;
+            this.btnCancelarFC.Click += new System.EventHandler(this.btnCancelarFC_Click);
             // 
             // FuncionCuadraticaView
             // 

@@ -40,7 +40,10 @@ namespace MHMenuDeOpciones.App.Src.Controllers
                 double x1 = (-b + delta) / (2 * a);
                 double x2 = (-b - delta) / (2 * a);
 
-                result.Text = $"Raices reales: x1 = {x1}, x2 = {x2}";
+                System.Globalization.CultureInfo culturaVenezuela = new System.Globalization.CultureInfo("es-VE");
+
+                //result.Text = $"Raices reales: x1 = { string.Format("{0:N2}", x1) }, x2 = { string.Format("{0:N2}", x2) }";
+                result.Text = $"Raices reales: x1 = {x1.ToString("N2", culturaVenezuela)} && x2 = {x2.ToString("N2", culturaVenezuela)}";
                 result.Caption = "Éxito";
                 result.Buttons = MessageBoxButtons.OK;
                 result.Icon = MessageBoxIcon.Information;
