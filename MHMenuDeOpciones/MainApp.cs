@@ -18,7 +18,7 @@ namespace MHMenuDeOpciones
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(MenuController.GetGUIMenuOpciones());
+            Application.Run(MenuController.GetView());
         }
     }
 }

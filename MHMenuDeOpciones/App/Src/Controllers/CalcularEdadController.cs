@@ -30,7 +30,17 @@ namespace MHMenuDeOpciones.App.Src.Controllers
         {
             Resultado result = new Resultado();
 
-            result.Text = $"Usted tiene { DateTime.Now.Year - Fecha.Year } años";
+            DateTime Ahora = DateTime.Now;
+
+            bool CumplioAnio = (Ahora.Month == Fecha.Month && Ahora.Day == Fecha.Day)
+            ||
+            (Ahora.Month == Fecha.Month && Ahora.Day > Fecha.Day)
+            ||
+            (Ahora.Month > Fecha.Month);
+
+            int edad = DateTime.Now.Year - Fecha.Year;
+
+            result.Text = $"Usted tiene {(CumplioAnio ? edad : edad - 1)} años";
             result.Caption = "Éxito";
             result.Buttons = MessageBoxButtons.OK;
             result.Icon = MessageBoxIcon.Information;

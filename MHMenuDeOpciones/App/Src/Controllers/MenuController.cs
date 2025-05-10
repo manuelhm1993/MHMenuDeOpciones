@@ -23,7 +23,7 @@ namespace MHMenuDeOpciones.App.Src.Controllers
         #endregion
 
         #region Métodos
-        public static MenuView GetGUIMenuOpciones() => FormMenu;
+        public static MenuView GetView() => FormMenu;
         #endregion
     }
 }
