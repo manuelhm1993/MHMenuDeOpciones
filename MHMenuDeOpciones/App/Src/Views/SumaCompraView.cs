@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MHMenuDeOpciones.App.Src.Controllers;
+using MHMenuDeOpciones.App.Src.Models;
 using Microsoft.VisualBasic; // Se agregó la referencia en el proyecto
 
 namespace MHMenuDeOpciones.App.Src.Views
@@ -42,7 +43,8 @@ namespace MHMenuDeOpciones.App.Src.Views
             {
                 MessageBox.Show("El valor ingresado no es un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            
+            // Crear un botón dinámicamente
             Button button = new Button();
 
             button.Name = "btnCalcularSumaCompra";
@@ -50,8 +52,13 @@ namespace MHMenuDeOpciones.App.Src.Views
             button.Height = 30;
             button.Width = 123;
 
+            // Poner a la escucha del evento click al botón
+            button.Click += new System.EventHandler(this.SumarItemsCompra);
+
+            // Agregar el botón al layout
             layout.Controls.Add(button);
 
+            // Agregar el layout al form
             this.Controls.Add(layout);
         }
 
@@ -80,12 +87,49 @@ namespace MHMenuDeOpciones.App.Src.Views
                 number.DecimalPlaces = 2;
                 number.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
                 number.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0});
-                number.Minimum = new decimal(new int[] { 1000000000, 0, 0, -2147483648});
+                number.Minimum = new decimal(new int[] { 0, 0, 0, 0});
                 number.Name = $"number{i}";
                 number.TabIndex = i;
 
                 layout.Controls.Add(number);
             }
+
+            PonerEscuchaFocus();
         }
+
+        private void PonerEscuchaFocus()
+        {
+            foreach (NumericUpDown number in this.layout.Controls.OfType<NumericUpDown>())
+            {
+                number.GotFocus += new System.EventHandler(this.numericUpDownGotFocus);
+            }
+        }
+
+        #region Eventos
+        private void SumarItemsCompra(object sender, EventArgs e)
+        {
+            Resultado result = SumaCompraController.GetResultadoSumaCompra(this.layout.Controls.OfType<NumericUpDown>());
+
+            MessageBox.Show(result.Text, result.Caption, result.Buttons, result.Icon);
+
+            Reset();
+        }
+
+        private void numericUpDownGotFocus(object sender, EventArgs e)
+        {
+            NumericUpDown number = (NumericUpDown)sender;
+            if (number.Controls.Count > 0)
+            {
+                foreach (Control control in number.Controls)
+                {
+                    if (control is TextBox textBox)
+                    {
+                        textBox.SelectAll();
+                        break;
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }
