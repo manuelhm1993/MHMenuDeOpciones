@@ -16,7 +16,7 @@ namespace MHMenuDeOpciones.App.Src.Views
 {
     public partial class SumaCompraView : Form
     {
-        private TableLayoutPanel layout = new TableLayoutPanel();
+        private TableLayoutPanel layout;
 
         public SumaCompraView()
         {
@@ -37,8 +37,6 @@ namespace MHMenuDeOpciones.App.Src.Views
             if (int.TryParse(cantidadArticulosString, out int cantidadArticulos))
             {
                 CrearInputs(cantidadArticulos, layout);
-
-                this.Controls.Add(layout);
             }
             else
             {
