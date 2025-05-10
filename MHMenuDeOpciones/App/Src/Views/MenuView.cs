@@ -17,6 +17,7 @@ namespace MHMenuDeOpciones.App.Src.Views
         #region Campos de clase
         private FuncionCuadraticaView _FormFuncionCuadraticaView;
         private CalcularEdadView _FormCalcularEdadView;
+        private SumaCompraView _FormSumaCompraView;
         #endregion
 
         #region Propiedades
@@ -29,14 +30,19 @@ namespace MHMenuDeOpciones.App.Src.Views
         {
             get => _FormCalcularEdadView;
         }
+
+        public SumaCompraView FormSumaCompraView
+        {
+            get => _FormSumaCompraView;
+        }
         #endregion
 
         #region Métodos
         public MenuView()
         {
             this._FormFuncionCuadraticaView = FuncionCuadraticaController.GetView();
-
             this._FormCalcularEdadView = CalcularEdadController.GetView();
+            this._FormSumaCompraView = SumaCompraController.GetView();
 
             InitializeComponent();
 
@@ -59,9 +65,13 @@ namespace MHMenuDeOpciones.App.Src.Views
             {
                 FuncionCuadratica.Reset();
             }
-            else if(FormView is CalcularEdadView CalcularEdad)
+            else if (FormView is CalcularEdadView CalcularEdad)
             {
                 CalcularEdad.Reset();
+            }
+            else if (FormView is SumaCompraView SumaCompra)
+            {
+                SumaCompra.Reset();
             }
 
             FormView.TopLevel = false;
@@ -88,7 +98,12 @@ namespace MHMenuDeOpciones.App.Src.Views
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            this.groupInput.Controls.Clear();
+            if(this.radioButton3.Checked)
+            {
+                this._FormSumaCompraView.CargarComponentes();
+
+                MostrarVista(this._FormSumaCompraView);
+            }
         }
         #endregion
     }
