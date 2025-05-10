@@ -80,6 +80,7 @@
     <Compile Include="App\Src\Views\SumaCompraView.Designer.cs">
       <DependentUpon>SumaCompraView.cs</DependentUpon>
     </Compile>
+    <Compile Include="App\Utilities\Common.cs" />
     <Compile Include="MainApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="App\Src\Views\CalcularEdadView.resx">

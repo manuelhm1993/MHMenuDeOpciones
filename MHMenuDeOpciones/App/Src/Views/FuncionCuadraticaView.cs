@@ -1,6 +1,4 @@
-﻿using MHMenuDeOpciones.App.Src.Controllers;
-using MHMenuDeOpciones.App.Src.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using MHMenuDeOpciones.App.Src.Controllers;
+using MHMenuDeOpciones.App.Src.Models;
+using MHMenuDeOpciones.App.Utilities;
 
 namespace MHMenuDeOpciones.App.Src.Views
 {
@@ -21,7 +23,7 @@ namespace MHMenuDeOpciones.App.Src.Views
 
             Numbers = this.Controls.OfType<NumericUpDown>();
 
-            PonerEscuchaFocus();
+            Common.PonerEscuchaFocus(Numbers);
             Reset();
         }
 
@@ -33,14 +35,6 @@ namespace MHMenuDeOpciones.App.Src.Views
             }
 
             this.numericUpDown1.Focus();
-        }
-
-        private void PonerEscuchaFocus()
-        {
-            foreach (NumericUpDown number in Numbers)
-            {
-                number.GotFocus += new System.EventHandler(this.numericUpDownGotFocus);
-            }
         }
         #endregion
 
@@ -56,22 +50,6 @@ namespace MHMenuDeOpciones.App.Src.Views
             MessageBox.Show(result.Text, result.Caption, result.Buttons, result.Icon);
 
             Reset();
-        }
-
-        private void numericUpDownGotFocus(object sender, EventArgs e)
-        {
-            NumericUpDown number = (NumericUpDown)sender;
-            if (number.Controls.Count > 0)
-            {
-                foreach (Control control in number.Controls)
-                {
-                    if (control is TextBox textBox)
-                    {
-                        textBox.SelectAll();
-                        break;
-                    }
-                }
-            }
         }
 
         private void btnCancelarFC_Click(object sender, EventArgs e)

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MHMenuDeOpciones.App.Src.Controllers;
 using MHMenuDeOpciones.App.Src.Models;
+using MHMenuDeOpciones.App.Utilities;
 using Microsoft.VisualBasic; // Se agregó la referencia en el proyecto
 
 namespace MHMenuDeOpciones.App.Src.Views
@@ -94,15 +95,7 @@ namespace MHMenuDeOpciones.App.Src.Views
                 layout.Controls.Add(number);
             }
 
-            PonerEscuchaFocus();
-        }
-
-        private void PonerEscuchaFocus()
-        {
-            foreach (NumericUpDown number in this.layout.Controls.OfType<NumericUpDown>())
-            {
-                number.GotFocus += new System.EventHandler(this.numericUpDownGotFocus);
-            }
+            Common.PonerEscuchaFocus(this.layout.Controls.OfType<NumericUpDown>());
         }
 
         #region Eventos
@@ -113,22 +106,6 @@ namespace MHMenuDeOpciones.App.Src.Views
             MessageBox.Show(result.Text, result.Caption, result.Buttons, result.Icon);
 
             Reset();
-        }
-
-        private void numericUpDownGotFocus(object sender, EventArgs e)
-        {
-            NumericUpDown number = (NumericUpDown)sender;
-            if (number.Controls.Count > 0)
-            {
-                foreach (Control control in number.Controls)
-                {
-                    if (control is TextBox textBox)
-                    {
-                        textBox.SelectAll();
-                        break;
-                    }
-                }
-            }
         }
         #endregion
     }
